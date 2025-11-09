@@ -1,17 +1,8 @@
-# Use PHP with Apache
+# Use the official PHP Apache image
 FROM php:8.2-apache
 
-# Enable mysqli
-RUN docker-php-ext-install mysqli
-
-# Copy project files into Apache root
+# Copy all files into the container
 COPY . /var/www/html/
 
-# Ensure index.php loads first
-RUN echo "DirectoryIndex index.php" >> /etc/apache2/apache2.conf
-
-# Expose port
+# Expose port 80 for web traffic
 EXPOSE 80
-
-# Start Apache
-CMD ["apache2-foreground"]
