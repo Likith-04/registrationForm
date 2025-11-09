@@ -1,10 +1,10 @@
 <?php
 session_start(); // ✅ Start session at the very top
 
-$servername = "localhost";
+$servername = "mysql.railway.internal";
 $username = "root";
-$password = "";
-$dbname = "regform_db";
+$password = "OQQPnUjDMpKCAgKwKQhtYINSEomKMPaX";
+$dbname = "railway";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
