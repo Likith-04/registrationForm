@@ -186,7 +186,7 @@ $result = $conn->query($sql);
     </div>
 
     <div style='text-align:center;'>
-      <a href="./index.php" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Registration</a>
+      <a href="index.php" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Registration</a>
     </div>
   </div>
 
