@@ -1,13 +1,26 @@
 <?php
-$servername = "mysql.railway.internal";  
-$username = "root";         
-$password = "OQQPnUjDMpKCAgKwKQhtYINSEomKMPaX";             
-$dbname = "railway";     
+// Get database URL from environment variable
+$db_url = getenv("DATABASE_URL");
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+if (!$db_url) {
+  die("❌ Database URL not found. Please set DATABASE_URL in Railway Variables.");
+}
 
+// Parse DATABASE_URL
+$db_parts = parse_url($db_url);
+
+$servername = $db_parts["host"];
+$username   = $db_parts["user"];
+$password   = $db_parts["pass"];
+$dbname     = ltrim($db_parts["path"], "/");
+$port       = $db_parts["port"];
+
+// Connect to MySQL
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
+
+// Check connection
 if ($conn->connect_error) {
-  die("<h3 style='color:red; text-align:center;'>Database Connection Failed: " . $conn->connect_error . "</h3>");
+  die("Connection failed: " . $conn->connect_error);
 }
 
 
